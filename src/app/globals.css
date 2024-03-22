@@ -26,3 +26,12 @@ body {
     text-wrap: balance;
   }
 }
+
+@keyframes shrink-left-to-right {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

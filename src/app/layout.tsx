@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,9 +22,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
       <body className={`h-full ${inter.className}`}>
-        <div className="min-h-full">
-          {children}
-        </div>
+        <div className="min-h-full">{children}</div>
       </body>
     </html>
   )

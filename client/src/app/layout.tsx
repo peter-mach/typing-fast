@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Head from 'next/head'
 import { Inter } from 'next/font/google'
+
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,11 +15,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  console.log('main layout render')
+
   return (
     <html lang="en" className="h-full bg-gray-100">
-      <Head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </Head>
       <body className={`h-full ${inter.className}`}>
         <div className="min-h-full">{children}</div>
       </body>

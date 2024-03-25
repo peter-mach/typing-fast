@@ -25,7 +25,11 @@ export class CompetitionModel {
   }
 
   getPlayer(playerId: string): PlayerModel | undefined {
-    return this.allPlayers.find((player) => player.id === playerId)
+    const player = this.allPlayers.find((player) => player.id === playerId)
+    if (player) {
+      player.progress = ''
+    }
+    return player
   }
 
   isRoundActive(): boolean {
@@ -33,6 +37,7 @@ export class CompetitionModel {
   }
 
   archiveRound(round: RoundModel) {
+    round.players
     this.pastRounds.push(round)
     if (this.pastRounds.length >= DATA_CAP) {
       this.pastRounds.shift()
@@ -46,9 +51,10 @@ export class CompetitionModel {
 
     if (this.activeRound) {
       // copy all players from previous round to the new one
-      this.activeRound.players.forEach((player) => {
-        newRound.addPlayer(player)
-      })
+      newRound.players = [...this.activeRound.players]
+      // reset progress for each
+      newRound.players.forEach((p) => (p.progress = ''))
+
       this.archiveRound(this.activeRound)
     }
 

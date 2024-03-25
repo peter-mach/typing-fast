@@ -16,11 +16,15 @@ export class RoundModel {
   }
 
   addPlayer(player: PlayerModel): void {
-    this.players.push(player)
+    this.players = [player, ...this.players]
   }
 
   removePlayer(playerId: string): void {
     this.players = this.players.filter((player) => player.id !== playerId)
+  }
+
+  resetProgress() {
+    this.players.forEach((p) => (p.progress = ''))
   }
 
   updatePlayerStats(playerId: string, progress: string, wpm: number, accuracy: number): void {

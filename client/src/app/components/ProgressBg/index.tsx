@@ -7,7 +7,7 @@ interface ProgressBgProps {
 
 const ProgressBg: React.FC<ProgressBgProps> = ({ backgroundColorClass = 'bg-[#f5ff50]', seconds }) => {
   const progressBarStyle = {
-    animation: `shrink-left-to-right ${seconds}s linear forwards`,
+    animation: `shrink-left-to-right ${seconds >= 0 ? seconds : 0}s linear forwards`,
     transformOrigin: 'right', // Ensures scaling happens from the right
   }
 

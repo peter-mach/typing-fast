@@ -1,10 +1,12 @@
 import React from 'react'
-import Image from 'next/image'
+
+import { useRoundStore } from '@/app/stores/roundStore'
 import { observer } from 'mobx-react-lite'
-import { useGameStore } from '@/app/stores/gameStore'
+import Image from 'next/image'
 
 const Header: React.FC = observer(() => {
-  const { currentSentence } = useGameStore()
+  const roundStore = useRoundStore()
+  const { sentence } = roundStore
 
   return (
     <header className="bg-gray-800 pb-44">
@@ -37,7 +39,7 @@ const Header: React.FC = observer(() => {
       <div className="py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 id="sentence" className="text-3xl font-bold tracking-tight text-white">
-            {currentSentence}
+            {sentence || 'Loading active competition round...'}
           </h1>
         </div>
       </div>

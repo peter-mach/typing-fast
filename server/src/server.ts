@@ -1,12 +1,19 @@
-import express from 'express';
+import express from 'express'
+import http from 'http'
 
-const app = express();
-const PORT = 3003;
+import { ServerSocket } from './serverSocket'
+
+const app = express()
+const server = http.createServer(app)
+// eslint-disable-next-line
+const serverSocket = new ServerSocket(server)
+
+const PORT = process.env.PORT || 3003
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+  res.send('Real-time Writing Competition Server')
+})
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`)
+})

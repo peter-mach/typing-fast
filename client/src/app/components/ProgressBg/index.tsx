@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface ProgressBgProps {
-  backgroundColorClass?: string // TailwindCSS classes for background
-  seconds: number // Duration in seconds for the animation
+  backgroundColorClass?: string
+  seconds: number
 }
 
 const ProgressBg: React.FC<ProgressBgProps> = ({ backgroundColorClass = 'bg-[#f5ff50]', seconds }) => {
